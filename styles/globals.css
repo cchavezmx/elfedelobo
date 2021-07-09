@@ -1,9 +1,26 @@
+
+@import "./Home.module.css";
+@import "./_variables.css";
+
+@font-face {
+  font-family: Poppins;
+  src: url("../public/Poppins/Poppins-Regular.ttf");
+}
+
+@font-face {
+  font-family: Poppins;
+  src: url("../public/Poppins/Poppins-Bold.ttf");
+  font-weight: bold;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  box-sizing: border-box;
+  font-family: Poppins, sans-serif;
+  color: white;
+  background-color: #1E2938;
 }
 
 a {
