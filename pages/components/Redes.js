@@ -3,9 +3,6 @@ import { UilTwitter, UilFacebook, UilInstagramAlt, UilDiscord , UilYoutube } fro
 
 
 const Redes = ({ count }) => {
-
-  console.log(count)
-
   return(
     <div className="redes--icos">
       <div> 

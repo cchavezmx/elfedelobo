@@ -3,15 +3,14 @@ import imageHook from '../../utils/imageHook'
 
 const Card = ({ payload }) => {
 
-  const { title } = payload
-  const { load, apiImage } = imageHook({ name: title })
+  const { load, apiImage } = imageHook({ name: payload.title })
   
   return(
       <div className="tarjeta--juego">
       { load 
         ? <Image 
           src={apiImage}
-          alt={title}
+          alt={payload.title}
           width={600}
           height={600}
           objectFit="cover"
@@ -20,7 +19,7 @@ const Card = ({ payload }) => {
         />  
         : <span>Loading...</span>
       }
-      <p>{ title }</p>        
+      <p>{ payload.title }</p>        
   </div>
   )
 }

@@ -15,9 +15,6 @@ const getAllGames = async () => {
   const allGames = await fetch("/api/fedecreator")
   .then(res => res.json())
   .then(data => data.data)
-
-  console.log(allGames)
-
   return allGames
 
 }
