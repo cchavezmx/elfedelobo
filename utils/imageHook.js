@@ -9,13 +9,7 @@ const ImageHook = ({ name } = {}) => {
 
     const promise = new Promise(( resolve ) => {
       resolve(
-        fetch('/api/games', {
-          headers: {"Content-type": "application/json"},
-          method: "POST",
-          body: JSON.stringify({
-            name
-          })
-        })
+        fetch(`/api/games?name=${name}`)
         .then(res => res.json())
         .then(data => data.img)
         .catch(err => console.log(err))
@@ -25,7 +19,7 @@ const ImageHook = ({ name } = {}) => {
     Promise.all([ promise ])
     .then(img => setImage(img))
     .finally(() => setLoad(true))
-    
+
   }, [name])
 
   return { load, apiImage: apiImage.toString() }

@@ -2,7 +2,9 @@ import { UilTwitter, UilFacebook, UilInstagramAlt, UilDiscord , UilYoutube } fro
 
 
 
-const Redes = () => {
+const Redes = ({ count }) => {
+
+  console.log(count)
 
   return(
     <div className="redes--icos">
@@ -25,7 +27,7 @@ const Redes = () => {
       </div>
       <div>
         <span>
-          <h1>Juegos Terminados: 1000</h1>
+          { Array.isArray(count) && <h1>{`Juegos Terminados: ${Object.values(count).map(item => item.countTotalGames)}`}</h1> }
         </span>
       </div>
     </div>

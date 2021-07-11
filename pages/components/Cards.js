@@ -4,49 +4,39 @@ import logo from '../../public/logo_lobo.jpg'
 import platino from '../../public/platinops5.png'
 import imageHook from '../../utils/imageHook'
 
-const array = [1,2,3,4,1,2]
-const platinados = [
-  "Astro's Playroom PS5",
-  "God of War",
-  "God of War 2",
-  "God of War 3",
-  "God of War PS4",
-  "Metal Gear Solid 2",
-  "Metal Gear Solid 3",
-  "Spider-Man PS4",
-  "Spider-Man Miles Morales PS5",
-  "Crash Bandicoot N Sane Triloy",
-  "Crash Bandicoot 2 N Sane Triloy",
-  "Crash Bandicoot Warped N Sane Trilogy"
-]
-
-const Cards = () => {
+const Cards = ({ payload, platinos }) => {
 
   return(
     <div className="container-cards">
 
       <div className="section--card">
           <div className="process">
-            <h2>En Proceso</h2>
+            <h2>Últimos</h2>
+            <a><small>Ver lista completa</small></a>
             <Image src={logo} alt="logo legendario" objectFit="cover" />
           </div>
         <section className="container--cards">
-        {
-          array.map(item => (
-            <div key={item} className="tarjeta--juego">
-                <Image
-                  src="/metal.jpg"
-                  alt={`imagen del juego ${item}`}
-                  quality={100}
-                  width={100} height={100} 
-                  objectPosition="center"
-
-                />
-                <p>Metal Gear Solid</p>
+        {            
+          Array.isArray(payload) && Object.values(payload).map((name, index) => {
+              const { load, apiImage } = imageHook({ name: name.title })
+              return(
+                <div key={index} className="tarjeta--juego">
+                { load 
+                  ? <Image 
+                    src={apiImage}
+                    alt="iamgen de metal gear" 
+                    width={600}
+                    height={600}
+                    objectFit="cover"
+                    objectPosition="right"
+                  />  
+                    : <span>Loading...</span>
+                }
+                <p>{ name.title }</p>
               </div>
-            ))
-          }
-          <a><small>Ver lista completa</small></a>
+              )
+            })
+          }   
         </section>
       </div>
 
@@ -57,23 +47,22 @@ const Cards = () => {
           </div>
         <section className="container--cards">
           {
-            platinados.map((name, index) => {
-              const { load, apiImage } = imageHook({ name })
+            Array.isArray(platinos) && Object.values(platinos).map((name, index) => {
+              const { load, apiImage } = imageHook({ name: name.title })
               return(
                 <div key={index} className="tarjeta--juego">
                 { load 
                   ? <Image 
                     src={apiImage}
                     alt="iamgen de metal gear" 
-                    width={100}
-                    height={100}
+                    width={600}
+                    height={600}
                     objectFit="cover"
-                    objectPosition="center"
-                    
-                      />  
+                    objectPosition="right"
+                  />  
                     : <span>Loading...</span>
                 }
-                <p>{ name }</p>
+                <p>{ name.title }</p>
               </div>
               )
             })
