@@ -1,9 +1,10 @@
+import Link from 'next/link'
 
 const Navigation = () => {
 
   return(
     <div className="navigation">
-        <h1>El Fedelobo</h1>
+        <Link href="/" passHref><h1>El Fedelobo</h1></Link>
         <nav>
           <span>about</span>
           <span>Contacto</span>

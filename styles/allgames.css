@@ -1,0 +1,42 @@
+.wrap--allgames{
+min-width: 100vh;
+display: flex;
+flex-wrap: wrap;
+margin-bottom: 25rem;
+}
+
+.buscador--content{
+display: flex;  
+justify-content: flex-end;
+width: 100%;
+padding: 1.25rem 0.75rem;
+}
+
+.buscador--content input[type=search]{
+border: none;
+width: 25rem;
+height: 2.5rem;
+padding: 0.75rem;
+font-size: x-large;
+border-radius: 4px;
+background-color: #2c3e50;
+color: #ffff;
+}
+
+.buscador--content input[type=search]::placeholder{
+    font-size: medium;
+
+}
+
+.buscador--content input[type=search]:focus{
+    background-color: var(--platino1);
+    color: var(--black);
+}
+
+.platino-card{
+    height: 100%;
+    background: linear-gradient(to right, var(--platino1), var(--platino2));
+    color: var(--black);
+    border-radius: 8px;
+}
+

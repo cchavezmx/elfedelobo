@@ -1,5 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
 import Image from 'next/image'
+import Link from 'next/link'
 import logo from '../../public/logo_lobo.jpg'
 import platino from '../../public/platinops5.png'
 import imageHook from '../../utils/imageHook'
@@ -12,7 +12,7 @@ const Cards = ({ payload, platinos }) => {
       <div className="section--card">
           <div className="process">
             <h2>Últimos</h2>
-            <a><small>Ver lista completa</small></a>
+            <Link href="/allgames">Ver lista completa</Link>
             <Image src={logo} alt="logo legendario" objectFit="cover" />
           </div>
         <section className="container--cards">

@@ -36,7 +36,10 @@ export default function Home() {
         </div>
       </main>
       <section className="col-12-pd-3">
+          
+          { state.matches("getDataBoard") && <div className="loading--lobo"></div> }
           { state.matches("success") && <Cards payload={dataBoard?.games} platinos={dataBoard?.platinos} /> }
+          
       </section>
     </div>
   )

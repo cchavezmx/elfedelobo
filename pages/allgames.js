@@ -6,7 +6,7 @@ import Card from './components/Card'
 const AllGames = () => {
 
   const [ state, send ] = useMachine(loboMachine)
-  const [ keyword, setKeyword ] = useState([])
+  const [ keyword, setKeyword ] = useState("")
   
   useEffect(() => {
     send("GET_ALL_GAMES")
@@ -14,6 +14,13 @@ const AllGames = () => {
 
   const { listGames } = state.context
   const allgamesMemo = useMemo(() => state.matches("success") && listGames,[listGames, state])
+  
+  const handleSearch = useMemo(() => {
+    const searchValues = Array.isArray(allgamesMemo) && keyword.length > 0 &&
+    allgamesMemo.filter(({ title }) => title.toLowerCase().startsWith(keyword))
+    return searchValues
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[keyword])
 
 
   return (
@@ -21,25 +28,24 @@ const AllGames = () => {
     <div className="container">
       <div className="buscador--content">
         <input 
-          className="buscador--juegil" 
-          placeholder="buscas algún juego" 
-          value={keyword} 
+          type="search"
+          list={handleSearch}
+          placeholder="Escribe una letra o buscas el título del juego"
           onChange={(e) => setKeyword(e.target.value)} ></input>
-
         </div>
-    
-    <span>{}</span>
+
     <section className="wrap--allgames">
+    { state.matches("getAllGames") && <div className="loading--lobo"></div> }
     {            
-      state.matches("success") && Object.values(allgamesMemo).slice(0, 20).map((name, index) => {
-          return <Card key={index} payload={name} />
-      })
+      handleSearch && handleSearch.map((game, index) => <Card key={index} payload={game}/> )      
+    }
+    {
+      state.matches("success") && !handleSearch && 
+      Object.values(allgamesMemo).slice(240, 250).map((name, index) => {
+        return <Card key={index} payload={name} /> })
     }
     </section>
     <div>
-      <span>
-        Cargar más...
-      </span>
     </div>
   </div>   
   )

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import fede from '../public/nodisponigle.gif'
 
 const ImageHook = ({ name } = {}) => {
   
@@ -22,7 +23,8 @@ const ImageHook = ({ name } = {}) => {
 
   }, [name])
 
-  return { load, apiImage: apiImage.toString() }
+  let img = apiImage.toString().length > 0 ? apiImage.toString() : fede
+  return { load, apiImage: img }
 }
 
 

@@ -1,6 +1,7 @@
 
 @import "./Home.module.css";
 @import "./_variables.css";
+@import "./allgames.css";
 
 @font-face {
   font-family: Poppins;
@@ -41,4 +42,23 @@ a {
   .col-12-pd-3{
     width: 100%;
   }
+}
+
+.loading--lobo{
+  
+  background-image: url("../public/logo_lobo.jpg");
+  background-repeat: no-repeat;
+  background-size: 200px;
+  background-position: center;
+  border-radius: 100%;
+  min-width: 200px;
+  min-height: 200px;
+  animation: opacity 4s infinite ease-in-out;
+}
+
+@keyframes opacity {
+  0% { opacity: 0.25; }
+  25% { opacity: 0.75; }
+  50% { opacity: 1; }
+  100% { opacity: 0.25;}
 }

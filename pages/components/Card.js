@@ -16,10 +16,12 @@ const Card = ({ payload }) => {
           objectFit="cover"
           objectPosition="right"
           quality={50}
+          
         />  
         : <span>Loading...</span>
       }
-      <p>{ payload?.title }</p>        
+      <p>{ payload?.title }</p>
+      <span>{ payload && payload.platino && <p className="platino-card">Juego Platinado</p> }</span>      
   </div>
   )
 }
