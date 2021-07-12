@@ -14,7 +14,7 @@ const Card = ({ payload }) => {
           width={600}
           height={600}
           objectFit="cover"
-          objectPosition="right"
+          objectPosition="center"
           quality={50}
           
         />  

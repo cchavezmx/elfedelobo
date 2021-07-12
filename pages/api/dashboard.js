@@ -14,7 +14,8 @@ export default async function dashboard(req, res) {
         const lastGames = new Promise((resolve, reject) => {
           resolve(
             Juegos.aggregate()
-            .match({}).limit(12)
+            .match({})
+            .limit(12)
           )
         })
 

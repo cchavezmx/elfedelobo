@@ -22,6 +22,7 @@ const AllGames = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[keyword])
 
+  let randomNumber = Math.floor(Math.random() * 280) + 1
 
   return (
     
@@ -30,7 +31,7 @@ const AllGames = () => {
         <input 
           type="search"
           list={handleSearch}
-          placeholder="Escribe una letra o buscas el título del juego"
+          placeholder="Escribe una letra o busca el título del juego"
           onChange={(e) => setKeyword(e.target.value)} ></input>
         </div>
 
@@ -41,8 +42,9 @@ const AllGames = () => {
     }
     {
       state.matches("success") && !handleSearch && 
-      Object.values(allgamesMemo).slice(240, 250).map((name, index) => {
-        return <Card key={index} payload={name} /> })
+      Object.values(allgamesMemo).slice(randomNumber, randomNumber + 15).map((name, index) => {
+        return <Card key={index} payload={name} /> 
+      })
     }
     </section>
     <div>
